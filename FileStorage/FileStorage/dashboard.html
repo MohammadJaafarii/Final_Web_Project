@@ -1,0 +1,710 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                        primary: '#7288FA'
+                    },
+                    boxShadow: {
+                        search: '0 0px 15px 3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
+                    }
+                }
+            }
+        }
+    </script>
+    <title>dashboard</title>
+</head>
+
+<body>
+    <header class="flex justify-between sm:justify-between items-center px-5 sm:p-8">
+        <div class="flex items-center gap-5 lg:gap-16 lg:w-1/2">
+            <img src="./img/Logo (2).png" class="min-w-[35%] sm:min-w-[20%]" />
+            <div class="relative w-full">
+                <input placeholder="Search..." type="search"
+                    class="hidden lg:block p-3 px-8 rounded-full w-full shadow-search outline-none border-none" />
+                <svg width="20" height="20" class="lg:absolute top-4 left-2 cursor-pointer " viewBox="0 0 20 20"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="9.16667" cy="9.16667" rx="6.66667" ry="6.66667" stroke="#333F4E" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M13.75 14.1308L17.9167 18.2975" stroke="#333F4E" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+        <div class="flex items-center">
+            <button class="bg-primary relative text-white rounded-full sm:px-5 flex gap-2 p-2 sm:py-3 overflow-hidden">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_664_278)">
+                        <path
+                            d="M16.1273 17.2771H11.8363V12.9412H13.2544C13.614 12.9412 13.8265 12.5325 13.614 12.2383L10.8555 8.42138C10.6798 8.17618 10.3161 8.17618 10.1404 8.42138L7.3819 12.2383C7.16939 12.5325 7.37781 12.9412 7.74152 12.9412H9.15958V17.2771H4.3537C2.20821 17.1586 0.5 15.1521 0.5 12.978C0.5 11.4782 1.31324 10.1705 2.5188 9.46347C2.40846 9.16515 2.35125 8.84639 2.35125 8.51129C2.35125 6.9788 3.5895 5.74055 5.12199 5.74055C5.453 5.74055 5.77176 5.79776 6.07009 5.9081C6.95689 4.02825 8.86943 2.72461 11.0926 2.72461C13.9696 2.7287 16.3398 4.93139 16.6095 7.73891C18.8204 8.11897 20.5 10.1664 20.5 12.4835C20.5 14.96 18.5711 17.1055 16.1273 17.2771Z"
+                            fill="white" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_664_278">
+                            <rect width="20" height="20" fill="white" transform="translate(0.5)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                <input type="file" class="opacity-0 w-[150px] absolute cursor-pointer left-0" />
+                <p class="hidden sm:block">Upload</p>
+            </button>
+            <div class="flex items-center">
+                <img class="cursor-pointer" src="./img/Avatar.png" />
+                <h3 class="hidden sm:block">Mitchel</h3>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="bg-white px-5 pb-5 lg:px-10 lg:pb-10">
+        <main class="bg-[#F2F4F8] rounded-3xl p-5 lg:p-10">
+            <h3 class="text-2xl font-bold">Objects</h3>
+            <p class="mb-5">Total: 12GB</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2" >
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg id="card1" class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Sketch.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">BC company.sketch</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct </h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/XD.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">B.UI.xd</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct </h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/PDF.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">school.pdf</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+
+                <!-- cards -->
+                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="./img/Figma.png" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">App School.fig</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">10 GB - 10:09pm, 10 Oct</h5>
+                    </div>
+
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+
+                </div>
+                <div class="rounded-xl p-5 w-[300px] absolute hidden top-[50%] shadow-search bg-white" id="file1">
+                    <h4 class="font-bold">App School.fig</h4>
+                    <ul>
+                        <li class="flex border-b py-2 gap-2">
+                            <div class="bg-orange-100 p-2 rounded-full ">
+                                <img src="./img/Share.png" alt="">
+                            </div>
+                            Share
+                        </li>
+                        <li class="flex border-b py-2 gap-2">
+                            <div class="bg-blue-100 p-2 rounded-full ">
+                                <img src="./img/Dowload.png" alt="">
+                            </div>
+                            Download
+                        </li>
+                        <li class="flex py-2 gap-2">
+                            <div class="bg-red-100 p-2 rounded-full ">
+                                <img src="./img/Trash.png" alt="">
+                            </div>
+                            Delete
+                        </li>
+                    </ul>
+                </div>
+                <div class="rounded-xl p-5 w-[300px] absolute hidden" id="file2">
+                    <h4 class="font-bold">App School.fig</h4>
+                    <ul>
+                        <li class="flex border-b py-2 gap-2">
+                            <div class="bg-blue-100 p-2 rounded-full ">
+                                <img src="./img/Dowload.png" alt="">
+                            </div>
+                            Download
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </section>
+    <script src="./script.js"></script>
+</body>
+
+</html>
