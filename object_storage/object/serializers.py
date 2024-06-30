@@ -88,12 +88,14 @@ class TempUserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('نام کاربری باید حداقل 4 کاراکتر باشد.')
         if not re.match("^[a-zA-Z]*$", value):
             raise serializers.ValidationError('نام کاربری باید فقط شامل حروف انگلیسی باشد.')
-        if TempUser.objects.exclude(pk=self.instance.pk if self.instance else None).filter(username=value.lower()).exists():
+        if CustomUser.objects.exclude(pk=self.instance.pk if self.instance else None).filter(username=value.lower()).exists()\
+                or TempUser.objects.exclude(pk=self.instance.pk if self.instance else None).filter(username=value.lower()).exists():
             raise serializers.ValidationError('نام کاربری انتخاب شده قبلا استفاده شده است.')
         return value.lower()
 
     def validate_email(self, value):
-        if TempUser.objects.exclude(pk=self.instance.pk if self.instance else None).filter(email=value.lower()).exists():
+        if CustomUser.objects.exclude(pk=self.instance.pk if self.instance else None).filter(email=value.lower()).exists() \
+                or TempUser.objects.exclude(pk=self.instance.pk if self.instance else None).filter(email=value.lower()).exists():
             raise serializers.ValidationError('این ایمیل قبلا ثبت شده است.')
         return value.lower()
 

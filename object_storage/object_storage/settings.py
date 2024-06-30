@@ -11,14 +11,15 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 # For Sending Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "mohammadjafari18132@gmail.com"
+EMAIL_HOST_PASSWORD = "dpgz azoh kpml kmfm"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'finalweb2024@gmail.com'
-EMAIL_HOST_PASSWORD = 'finalweb'  # رمز عبور حساب Gmail شما
-DEFAULT_FROM_EMAIL = 'finalweb2024@gmail.com'
+DEFAULT_FROM_EMAIL = "OSTeam mohammadjafari18132@gmail.com"
 SITE_URL = 'http://127.0.0.1:8000'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -64,11 +65,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'object_storage.urls'
-
+print(os.path.join(BASE_DIR, 'object/templates')+'----------------------')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'object')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
