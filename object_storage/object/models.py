@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.hashers import make_password, check_password
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
@@ -139,3 +140,15 @@ class TempUser(models.Model):
 
     def __str__(self):
         return f'Id:{self.id} UserName: {self.username}, Email: {self.email}'
+        
+ class ObjectStorage(models.Model):
+    object_name = models.CharField(max_length=50)
+    url_file = models.CharField(max_length=300)
+    icon = models.ImageField(upload_to='icons/')
+    size = models.PositiveIntegerField()
+    upload_datetime = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='owned_objects')
+    accessible_users = models.ManyToManyField(CustomUser, related_name='accessible_objects')
+
+    def __str__(self):
+        return f'Object {self.id} owned by {self.owner.username}'
