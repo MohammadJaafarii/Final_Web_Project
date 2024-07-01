@@ -57,7 +57,7 @@ class VerifyEmailView(APIView):
                 user.set_password(raw_password)  # استفاده از پسورد اصلی
                 user.save()
                 temp_user.delete()
-                return redirect('login')  # نام URL صفحه ورود خود را تنظیم کنید
+                return Response({'message': 'Login succesful'}, status=status.HTTP_200_OK) # نام URL صفحه ورود خود را تنظیم کنید
             except TempUser.DoesNotExist:
                 return HttpResponse('کاربر یافت نشد.', status=status.HTTP_404_NOT_FOUND)
         return HttpResponse('لینک تأیید نامعتبر است یا منقضی شده است.', status=status.HTTP_400_BAD_REQUEST)
