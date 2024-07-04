@@ -1,12 +1,14 @@
+import mimetypes
 
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from .models import ObjectStorage,CustomUser
-from .serializer import ObjectStorageSerializer,CustomUserRetSerializer
+from .models import ObjectStorage,CustomUser,UploadedFile
+from .serializer import ObjectStorageSerializer,CustomUserRetSerializer,UploadedFileSerializer
 from rest_framework.parsers import MultiPartParser,FormParser
+from django.http import HttpResponseRedirect
 from . import arvan
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -26,23 +28,46 @@ from django.contrib import messages
 
 
 class ObjectStorageCreateView(APIView):
-    parser_classes = [MultiPartParser,FormParser]
+    parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request):
-        serializer = ObjectStorageSerializer(data=request.data)
-        object_name = request.data['object_name']
-        file_path = request.data['url_file']
-        flag = arvan.uploadobject(file_path=file_path, object_name=object_name)
-        if flag:
+        file = request.FILES.get('file')
+        owner = request.data.get('owner')
+        accessible_users = list(request.data.get('accessible_users'))
+        print('---------', file)
+        print('---------', owner)
+        print('---------', accessible_users)
+
+        if file:
+            # دریافت نوع فایل با استفاده از mimetypes
+            file_type, _ = mimetypes.guess_type(file.name)
+            if file_type is None:
+                file_type = 'application/octet-stream'  # مقدار پیش‌فرض در صورت عدم شناسایی نوع فایل
+
+            file_data = {
+                'file': file,
+                'file_name': file.name,
+                'file_type': file_type,
+                'file_size': file.size,
+                'owner': owner,
+                'accessible_users': accessible_users,
+            }
+            serializer = UploadedFileSerializer(data=file_data)
+            path = f'C:\\Users\\ok\\PycharmProjects\\final web\\Final_Web_Project\\object_storage\\media\\uploads\\{file.name}'
             if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                saved_instance = serializer.save()
+                flag = arvan.uploadobject(file_path=path, object_name=file.name)
+                if flag:
+                    return Response(serializer.data, status=status.HTTP_201_CREATED)
+                saved_instance.delete()
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class ObjectStorageSingle(APIView):
     def delete(self,request,pk):
-        object = ObjectStorage.objects.get(pk=pk)
-        object_name = object.object_name
+        object = UploadedFile.objects.get(pk=pk)
+        object_name = object.file_name
         flag = arvan.deleteobject(object_name=object_name)
         if flag:
             object.delete()
@@ -50,11 +75,11 @@ class ObjectStorageSingle(APIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def get(self,request,pk):
-        object = ObjectStorage.objects.get(pk=pk)
-        object_name = object.object_name
+        object = UploadedFile.objects.get(pk=pk)
+        object_name = object.file_name
         flag = arvan.download_object(object_name=object_name)
         if flag:
-            serializer = ObjectStorageSerializer(object)
+            serializer = UploadedFileSerializer(object)
             return Response(serializer.data,status=status.HTTP_200_OK)
 
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -63,30 +88,30 @@ class ObjectStorageManagement(APIView):
     def get(self,request,pk):
         try:
 
-            accessible_objects = ObjectStorage.objects.filter(accessible_users__id=pk)
-            serializer = ObjectStorageSerializer(accessible_objects, many=True)
+            accessible_objects = UploadedFile.objects.filter(accessible_users__id=pk)
+            serializer = UploadedFileSerializer(accessible_objects, many=True)
 
             return Response(serializer.data,status=status.HTTP_200_OK)
-        except ObjectStorage.DoesNotExist:
+        except UploadedFile.DoesNotExist:
             return Response({"error": "Objects not found."}, status=status.HTTP_404_NOT_FOUND)
 
 class ObjectStorageAccessManagement(APIView):
-    def patch(self,request,action:str,pk:int):
-        obj_id = request.data.get('id')
-        object = ObjectStorage.objects.get(pk=obj_id)
-
-        if action == 'add':
-            object.accessible_users.add(pk)
-            message = f"User {pk} added to accessible users of object {obj_id}."
-
-        elif action == 'delete':
-            object.accessible_users.remove(pk)
-            message = f"User {pk} removed from accessible users of object {obj_id}."
-        else:
-            return Response({"error": "Invalid action."}, status=status.HTTP_400_BAD_REQUEST)
-
+    def post(self,request,pk:int):
+        user = request.data.get('values')
+        object = UploadedFile.objects.get(pk=pk)
+        object.accessible_users.set(user)
         object.save()
-        return Response({"message": message}, status=status.HTTP_200_OK)
+        for id in user:
+            us = CustomUser.objects.get(pk=id)
+            email = EmailMultiAlternatives(
+                'ایمیل دسترسی دادن به شی',
+                f'شما به ابجکت {object.file_name} دسترسی پیدا کردید.',
+                settings.DEFAULT_FROM_EMAIL,
+                [us.email]
+            )
+            email.send()
+
+        return Response({"message": 'successful'}, status=status.HTTP_200_OK)
 
 class AllUser(APIView):
     def get(self,request):
@@ -138,7 +163,7 @@ class VerifyEmailView(APIView):
                 user.set_password(raw_password)  # استفاده از پسورد اصلی
                 user.save()
                 temp_user.delete()
-                return redirect('login')  # نام URL صفحه ورود خود را تنظیم کنید
+                return HttpResponseRedirect('http://127.0.0.1:5500/verify.html')
             except TempUser.DoesNotExist:
                 return HttpResponse('کاربر یافت نشد.', status=status.HTTP_404_NOT_FOUND)
         return HttpResponse('لینک تأیید نامعتبر است یا منقضی شده است.', status=status.HTTP_400_BAD_REQUEST)

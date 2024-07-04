@@ -52,12 +52,12 @@
                         </clipPath>
                     </defs>
                 </svg>
-                <input type="file" class="opacity-0 w-[150px] absolute cursor-pointer left-0" />
+                <input type="file" id="fileInput"  class="opacity-0 w-[150px] absolute cursor-pointer left-0" />
                 <p class="hidden sm:block">Upload</p>
             </button>
             <div class="flex items-center">
                 <img class="cursor-pointer" src="./img/Avatar.png" />
-                <h3 class="hidden sm:block">Mitchel</h3>
+                <h3 class="hidden sm:block" id="user_name">Mitchel</h3>
             </div>
         </div>
     </header>
@@ -66,10 +66,10 @@
     <section class="bg-white px-5 pb-5 lg:px-10 lg:pb-10">
         <main class="bg-[#F2F4F8] rounded-3xl p-5 lg:p-10">
             <h3 class="text-2xl font-bold">Objects</h3>
-            <p class="mb-5">Total: 12GB</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
-                <!-- cards -->
-                <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2" >
+            <p class="mb-5" id="tt">Total: 12GB</p>
+            <div id="cnt_object" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
+                 
+                <!--<div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2" >
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
                     </span>
@@ -93,7 +93,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Sketch.png" />
@@ -118,7 +118,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/XD.png" />
@@ -143,7 +143,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/PDF.png" />
@@ -168,7 +168,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -193,7 +193,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -218,7 +218,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -243,7 +243,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -268,7 +268,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -293,7 +293,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -318,7 +318,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -343,7 +343,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -368,7 +368,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -393,7 +393,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -418,7 +418,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -443,7 +443,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -468,7 +468,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -493,7 +493,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -518,7 +518,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -543,7 +543,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -568,7 +568,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -593,7 +593,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -618,7 +618,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -643,7 +643,7 @@
 
                 </div>
 
-                <!-- cards -->
+                 
                 <div class="bg-white rounded-lg flex gap-2 items-center justify-between p-2">
                     <span class="rounded-full bg-[#F2F4F8] p-2">
                         <img src="./img/Figma.png" />
@@ -666,8 +666,8 @@
                             stroke="#A3B2C7" stroke-width="1.18182" />
                     </svg>
 
-                </div>
-                <div class="rounded-xl p-5 w-[300px] absolute hidden top-[50%] shadow-search bg-white" id="file1">
+                </div>-->
+                <!--<div class="rounded-xl p-5 w-[300px] absolute hidden top-[50%] shadow-search bg-white" id="file1">
                     <h4 class="font-bold">App School.fig</h4>
                     <ul>
                         <li class="flex border-b py-2 gap-2">
@@ -690,7 +690,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="rounded-xl p-5 w-[300px] absolute hidden" id="file2">
+                <div class="rounded-xl p-5 w-[300px] absolute hidden bg-white" id="file2">
                     <h4 class="font-bold">App School.fig</h4>
                     <ul>
                         <li class="flex border-b py-2 gap-2">
@@ -700,11 +700,371 @@
                             Download
                         </li>
                     </ul>
-                </div>
+                </div>-->
             </div>
         </main>
     </section>
-    <script src="./script.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const responseData = JSON.parse(sessionStorage.getItem('responseData'));
+        console.log(responseData);
+        console.log(responseData['user_id']);
+        const un = document.getElementById('user_name');
+        un.innerHTML = `${responseData['username']}`
+        //show object
+        window.onload = function() {
+            const user_id = responseData['user_id']; 
+            const url = `http://127.0.0.1:8000/users/user/${user_id}`;
+
+            axios.get(url)
+                .then(function (response) {
+                    console.log('Response:', response.data);
+                     // استفاده از for loop
+                     let total = 0;
+                     for (let i = 0; i < response.data.length; i++) {
+                        console.log(`Item ${i}:`, response.data[i]);
+                        console.log(typeof(response.data[i].accessible_users))
+                        acc_user = response.data[i].accessible_users
+                        if (response.data[i].accessible_users.includes(user_id)) {
+                            console.log(`User ID ${user_id} is in accessible_users of item ${i}`);
+                            add_cart(response.data[i],true,i,acc_user)
+                            addpeople1(i,acc_user)
+                        } else {
+                            console.log(`User ID ${user_id} is NOT in accessible_users of item ${i}`);
+                            add_cart(response.data[i],false,i,acc_user)
+                            addpeople1(i,acc_user)
+                        }
+                        total += response.data[i].file_size
+                    }
+                    const paragraph = document.getElementById('tt');
+                    paragraph.innerHTML = `Total : ${total}`;
+
+                })
+                .catch(function (error) {
+                    console.error('There was an error!', error);
+                });
+        };
+        
+        function add_cart(data,flag,i,acc_user){
+            const cntObject = document.getElementById('cnt_object');
+            const newDiv = document.createElement('div');
+            newDiv.className = 'bg-white rounded-lg flex gap-2 items-center justify-between p-2';
+            if (flag){
+                newDiv.innerHTML = `
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="${data['icon_url']}" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">${data['file_name']}</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">${data['file_size']}B- ${data['upload_date']}</h5>
+                    </div>
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" onclick='showhide(${i})'>
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+                    <div class="rounded-xl p-5 w-[300px] absolute hidden top-[50%] shadow-search bg-white" id="${i}">
+                        <h4 class="font-bold">${data['file_name']}</h4>
+                        <ul>
+                            <li class="flex border-b py-2 gap-2 cursor-pointer" onclick="addpeople(${i})">
+                                <div class="bg-orange-100 p-2 rounded-full ">
+                                    <img src="./img/Share.png" alt="">
+                                </div>
+                                Share
+                            </li>
+                            <li class="flex border-b py-2 gap-2 cursor-pointer" onclick='dowmloadObject(${data['id']})'>
+                                <div class="bg-blue-100 p-2 rounded-full ">
+                                    <img src="./img/Dowload.png" alt="">
+                                </div>
+                                Download
+                            </li>
+                            <li class="flex py-2 gap-2 cursor-pointer" onclick='deleteObject(${data['id']})'>
+                                <div class="bg-red-100 p-2 rounded-full ">
+                                    <img src="./img/Trash.png" alt="">
+                                </div>
+                                Delete
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-col pt-6 bg-white max-w-[551px] rounded-[30px] hidden" id="addpeople${i}" style="
+    position: absolute;
+    top: calc(50% + 200px);
+">
+   <div class="flex flex-col px-8 w-full max-md:px-5 max-md:max-w-full">
+    <div class="flex gap-5 text-xl font-semibold leading-7 text-center text-gray-700 max-md:flex-wrap max-md:max-w-full">
+      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5a36f087008190fafe5706ecaccd4f60cc73269e74b79402e61b555e36a351d8?apiKey=7b0cbf1ed343480d8a8ca844c0ea4374&amp;" class="shrink-0 w-12 aspect-[0.98]">
+      <div class="flex-auto my-auto">Add People</div>
+    </div>
+    <div class="flex flex-col justify-center items-start p-4 mt-6 text-sm leading-5 bg-white shadow-xl rounded-[30px] text-slate-400 max-md:pr-5 max-md:max-w-full">
+      <div class="flex gap-2">
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd2c831c32c09a03b5885c76702089f9bdcda103e359a1991bcda8446d69b8b7?apiKey=7b0cbf1ed343480d8a8ca844c0ea4374&amp;" class="shrink-0 w-5 aspect-square">
+        <div>Search people</div>
+    </div>
+   </div>
+    <div id="contect${i}"></div>
+    <div class="flex gap-5 justify-center px-8 pt-5 pb-8 mt-1 w-full text-base font-semibold leading-5 text-center text-white whitespace-nowrap bg-white rounded-none shadow-lg max-md:flex-wrap max-md:px-5 max-md:max-w-full">
+    <div class="justify-center px-5 py-2.5 bg-indigo-400 shadow-lg rounded-[41px] max-md:px-5 cursor-pointer" onclick="submitCheckedValues(${data['id']},${i})">
+      Continue
+    </div>
+    
+  </div>
+                `;}
+            else{
+                newDiv.innerHTML = `
+                    <span class="rounded-full bg-[#F2F4F8] p-2">
+                        <img src="${data['icon_url']}" />
+                    </span>
+                    <div>
+                        <h5 class="font-bold text-sm sm:text-md">${data['file_name']}</h5>
+                        <h5 class="text-[#333F4E] text-xs sm:text-sm">${data['file_size']}B- ${data['upload_date']}</h5>
+                    </div>
+                    <svg class="cursor-pointer openModal" width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" onclick='showhide(${i})'>
+                        <path
+                            d="M10.834 20.5833C10.834 21.775 11.809 22.75 13.0007 22.75C14.1923 22.75 15.1673 21.775 15.1673 20.5833C15.1673 19.3917 14.1923 18.4167 13.0007 18.4167C11.809 18.4167 10.834 19.3917 10.834 20.5833Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 5.41732C10.834 6.60898 11.809 7.58398 13.0007 7.58398C14.1923 7.58398 15.1673 6.60898 15.1673 5.41732C15.1673 4.22565 14.1923 3.25065 13.0007 3.25065C11.809 3.25065 10.834 4.22565 10.834 5.41732Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                        <path
+                            d="M10.834 12.9993C10.834 14.191 11.809 15.166 13.0007 15.166C14.1923 15.166 15.1673 14.191 15.1673 12.9993C15.1673 11.8077 14.1923 10.8327 13.0007 10.8327C11.809 10.8327 10.834 11.8077 10.834 12.9993Z"
+                            stroke="#A3B2C7" stroke-width="1.18182" />
+                    </svg>
+                    <div class="rounded-xl p-5 w-[300px] absolute hidden bg-white" id="${i}">
+                    <h4 class="font-bold">${data['file_name']}</h4>
+                    <ul>
+                        <li class="flex border-b py-2 gap-2 cursor-pointer" onclick='dowmloadObject(${data['id']})'>
+                            <div class="bg-blue-100 p-2 rounded-full ">
+                                <img src="./img/Dowload.png" alt="">
+                            </div>
+                            Download
+                        </li>
+                    </ul>
+                    </div>
+                    
+                    
+                `;
+            }
+            cntObject.appendChild(newDiv);
+        }
+        function showhide(i){
+            const element = document.getElementById(`${i}`);
+            element.classList.toggle('hidden');
+        }
+        
+        //upload
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            event.preventDefault();
+
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('owner', responseData['user_id']); // جایگزین با مقدار واقعی owner
+                formData.append('accessible_users',[responseData['user_id'],]);
+
+                // لاگ گرفتن از داده‌ها
+                console.log('File:', file);
+                console.log('FileName:', file.name);
+                console.log('FileType:', file.type);
+                console.log('FileSize:', file.size);
+
+                axios.post('http://127.0.0.1:8000/users/create-object/', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(function (response) {
+                    console.log('File uploaded successfully', response.data);
+                    window.location.reload();
+                })
+                .catch(function (error) {
+                    console.error('There was an error!', error);
+                });
+            } else {
+                console.log('No file selected');
+            }
+        }); 
+        //delete
+        function deleteObject(id){
+            const url = `http://127.0.0.1:8000/users/object/${id}`;
+
+            axios.delete(url)
+                .then(function (response) {
+                    console.log('Object deleted successfully:');
+                    alert('Object deleted successfully')
+                    window.location.reload();
+                })
+                .catch(function (error) {
+                    console.error('There was an error deleting the object!', error);
+                });
+        }
+        //download
+        function dowmloadObject(id){
+            const url = `http://127.0.0.1:8000/users/object/${id}`;
+
+            axios.get(url)
+                .then(function (response) {
+                    console.log('Object download successfully:');
+                    alert('Object download successfully')
+                    //window.location.reload();
+                })
+                .catch(function (error) {
+                    console.error('There was an error deleting the object!', error);
+                });
+        }
+        //addpeople show
+        function addpeople(i){
+            const element = document.getElementById(`addpeople${i}`);
+            element.classList.toggle('hidden');
+        }
+        function addpeople1(i,...user){
+            
+            console.log(user)
+            const url = 'http://127.0.0.1:8000/users/users';
+            console.log(typeof(user))
+            
+            axios.get(url)
+                .then(function (response) {
+                    console.log('users:',response.data);
+                    for(let j=0; j<response.data.length;j++){
+                        id = response.data[j].id
+                        if(user.some(obj => Object.values(obj).includes(id)))
+                        {
+                            addone(response.data[j],i,true)
+                        }
+                        else{
+                            addone(response.data[j],i,false)
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    console.error('There was an error deleting the object!', error);
+                });
+        }
+        function addone(data,i,flag){
+            const parentDiv = document.getElementById(`contect${i}`);
+            
+            // Create the new div element
+            const newDiv = document.createElement('div');
+            newDiv.className = 'flex gap-3 pr-20 mt-7 text-sm leading-5 bg-white max-md:flex-wrap max-md:pr-5';
+            if (flag){
+                newDiv.innerHTML = `
+                    <div class="flex gap-3 pr-20 mt-7 text-sm leading-5 bg-white max-md:flex-wrap max-md:pr-5">
+                        <input type="checkbox" name="items${i}" class="shrink-0 my-auto aspect-square w-[18px]" value="${data.id}" id="check${data.id}" checked>
+                        <div class="flex flex-col">
+                            <div class="font-semibold text-gray-700">${data.username}</div>
+                            <div class="mt-1 text-slate-400">${data.email}</div>
+                        </div>
+                    </div>
+                `
+            }
+            else{
+                newDiv.innerHTML = `
+                    <div class="flex gap-3 pr-20 mt-7 text-sm leading-5 bg-white max-md:flex-wrap max-md:pr-5">
+                        <input type="checkbox" name="items${i}" class="shrink-0 my-auto aspect-square w-[18px]" value="${data.id}" id="check${data.id}" >
+                        <div class="flex flex-col">
+                            <div class="font-semibold text-gray-700">${data.username}</div>
+                            <div class="mt-1 text-slate-400">${data.email}</div>
+                        </div>
+                    </div>
+                `
+            }
+            parentDiv.appendChild(newDiv);
+        }
+        //access manager
+        function submitCheckedValues(id,i) {
+            // استخراج همه چک‌باکس‌هایی که علامت خورده‌اند
+            const checkedBoxes = document.querySelectorAll(`input[name="items${i}"]:checked`);
+            const values = Array.from(checkedBoxes).map(cb => cb.value);
+
+            // لاگ گرفتن از آرایه values
+            console.log(values); // مثلاً ['1', '3']
+
+            // آدرس URL
+            const url = `http://127.0.0.1:8000/users/user/object/${id}`;
+
+            // ارسال درخواست POST با استفاده از Axios
+            axios.post(url, { values })
+                .then(function (response) {
+                    console.log('Success:', response.data);
+                })
+                .catch(function (error) {
+                    console.error('There was an error!', error);
+                });
+        }
+    </script>
+    <script src="/script.js"></script>
 </body>
 
 </html>
+<!--
+<div class="flex flex-col pt-6 bg-white max-w-[551px] rounded-[30px]" style="
+    position: absolute;
+    top: calc(50% + 200px);
+">
+  <div class="flex flex-col px-8 w-full max-md:px-5 max-md:max-w-full">
+    <div class="flex gap-5 text-xl font-semibold leading-7 text-center text-gray-700 max-md:flex-wrap max-md:max-w-full">
+      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5a36f087008190fafe5706ecaccd4f60cc73269e74b79402e61b555e36a351d8?apiKey=7b0cbf1ed343480d8a8ca844c0ea4374&amp;" class="shrink-0 w-12 aspect-[0.98]">
+      <div class="flex-auto my-auto">Add People</div>
+    </div>
+    <div class="flex flex-col justify-center items-start p-4 mt-6 text-sm leading-5 bg-white shadow-xl rounded-[30px] text-slate-400 max-md:pr-5 max-md:max-w-full">
+      <div class="flex gap-2">
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd2c831c32c09a03b5885c76702089f9bdcda103e359a1991bcda8446d69b8b7?apiKey=7b0cbf1ed343480d8a8ca844c0ea4374&amp;" class="shrink-0 w-5 aspect-square">
+        <div>Search people</div>
+      </div>
+    </div>
+    
+<div class="flex gap-3 pr-20 mt-7 text-sm leading-5 bg-white max-md:flex-wrap max-md:pr-5">
+      <input type="checkbox" class="shrink-0 my-auto aspect-square w-[18px]" value="Bike">
+        <div class="flex flex-col">
+        <div class="font-semibold text-gray-700">Alice Emma</div>
+        <div class="mt-1 text-slate-400">emmaart1234@gmail.com</div>
+      </div>
+    </div>
+    <div class="flex gap-3 pr-20 mt-6 text-sm leading-5 bg-white max-md:flex-wrap max-md:pr-5">
+        <input type="checkbox" class="shrink-0 my-auto aspect-square w-[18px]" value="Bike">
+        <div class="flex flex-col">
+        <div class="font-semibold text-gray-700">Anne Jennifer</div>
+        <div class="mt-1 text-slate-400">jennifer@gmail.com</div>
+      </div>
+    </div>
+    <div class="flex gap-3 pr-20 mt-6 text-sm leading-5 bg-white max-md:flex-wrap max-md:pr-5">
+      <input type="checkbox" class="shrink-0 my-auto aspect-square w-[18px]" value="Bike">
+      <div class="flex flex-col">
+        <div class="font-semibold text-gray-700">Bush Matthew</div>
+        <div class="mt-1 text-slate-400">matthew0909@gmail.com</div>
+      </div>
+    </div>
+    <div class="flex gap-3 pr-20 mt-6 text-sm leading-5 bg-white max-md:flex-wrap max-md:pr-5">
+      <input type="checkbox" class="shrink-0 my-auto aspect-square w-[18px]" value="Bike">
+      <div class="flex flex-col">
+        <div class="font-semibold text-gray-700">Henry Rebecca</div>
+        <div class="mt-1 text-slate-400">henryrebeccca1234@gmail.com</div>
+      </div>
+    </div>
+    <div class="flex gap-3 pr-20 mt-6 text-sm leading-5 bg-white max-md:flex-wrap max-md:pr-5">
+      <input type="checkbox" class="shrink-0 my-auto aspect-square w-[18px]" value="Bike">
+      <div class="flex flex-col">
+        <div class="font-semibold text-gray-700">Geogre Michael</div>
+        <div class="mt-1 text-slate-400">art1234@gmail.com</div>
+      </div>
+    </div>
+    
+  <div class="flex gap-5 justify-center px-8 pt-5 pb-8 mt-1 w-full text-base font-semibold leading-5 text-center text-white whitespace-nowrap bg-white rounded-none shadow-lg max-md:flex-wrap max-md:px-5 max-md:max-w-full">
+    <div class="justify-center px-5 py-2.5 bg-indigo-400 shadow-lg rounded-[41px] max-md:px-5">
+      Continue
+    </div>
+  </div>
+
+-->

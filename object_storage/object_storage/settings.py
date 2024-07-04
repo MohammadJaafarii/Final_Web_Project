@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import environ
 from pathlib import Path
 import os
-
+from django.core.mail import send_mail
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Initialize environment variables
@@ -71,15 +71,15 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'object_storage.urls'
-CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:5500',
-]
+CORS_ALLOW_ALL_ORIGINS:True
 print(os.path.join(BASE_DIR, 'object/templates')+'----------------------')
 
 TEMPLATES = [
@@ -133,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
-    ]
+    ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
@@ -144,6 +144,10 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     ),
 }
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500"
+
+]
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 

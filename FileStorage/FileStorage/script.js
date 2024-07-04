@@ -22,6 +22,11 @@ const openModal = document.querySelectorAll('.openModal')
 const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
 const englishPattern = /\b\w*a\w*\b/;
 
+
+
+
+
+/* 
 if (emailUser?.value === '' || password?.value === '') {
     if (Login) {
         Login.disabled = true
@@ -151,9 +156,8 @@ if (email?.value === '' || username?.value === '' || password?.value === '' || c
         SignIn.disabled = true
     }
 }
-
+ */
 // if (SignIn.disabled === true) {
 //     SignIn.classList.add('opacity-50')
 //     SignIn.classList.add('cursor-not-allowed')
 // }
-

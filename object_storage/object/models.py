@@ -32,10 +32,10 @@ class CustomUser(models.Model):
     last_login = models.DateTimeField(blank=True, null=True)  # افزودن فیلد last_login
 
     def set_password(self, raw_password):
-        self.password = make_password(raw_password)
+        self.password = raw_password
 
     def check_password(self, raw_password):
-        return check_password(raw_password, self.password)
+        return raw_password
 
     def clean(self):
         super().clean()
@@ -96,11 +96,11 @@ class TempUser(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def set_password(self, raw_password):
-        self.password = make_password(raw_password)
+        self.password = raw_password
         self.raw_password = raw_password  # ذخیره پسورد خام
 
     def check_password(self, raw_password):
-        return check_password(raw_password, self.password)
+        return raw_password
     def get_raw_password(self):
         return self.password
     def clean(self):
@@ -141,14 +141,43 @@ class TempUser(models.Model):
     def __str__(self):
         return f'Id:{self.id} UserName: {self.username}, Email: {self.email}'
         
- class ObjectStorage(models.Model):
+class ObjectStorage(models.Model):
     object_name = models.CharField(max_length=50)
     url_file = models.CharField(max_length=300)
     icon = models.ImageField(upload_to='icons/')
     size = models.PositiveIntegerField()
     upload_datetime = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='owned_objects')
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='owned_objects')
     accessible_users = models.ManyToManyField(CustomUser, related_name='accessible_objects')
 
     def __str__(self):
         return f'Object {self.id} owned by {self.owner.username}'
+
+
+class UploadedFile(models.Model):
+    file = models.FileField(upload_to='uploads/')
+    file_name = models.CharField(max_length=255)
+    file_type = models.CharField(max_length=50)
+    file_size = models.PositiveIntegerField()
+    upload_date = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='owned_file')
+    accessible_users = models.ManyToManyField(CustomUser, related_name='accessible_user')
+
+    def __str__(self):
+        return self.file_name
+
+
+    def get_icon_url(self):
+        if 'image' in self.file_type:
+            return 'http://127.0.0.1:8000/media/icons/Image.png'
+
+        elif 'pdf' in self.file_type:
+            return 'http://127.0.0.1:8000/media/icons/PDF.png'
+
+        elif 'audio' in self.file_type:
+            return 'http://127.0.0.1:8000/media/icons/Music.png'
+
+        elif 'video' in self.file_type:
+            return 'http://127.0.0.1:8000/media/icons/Audio.png'
+        else:
+            return 'http://127.0.0.1:8000/media/icons/Others file.png'

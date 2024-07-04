@@ -30,7 +30,7 @@
     </div>
     <div class="bg-white p-32 flex flex-col justify-around gap-7 w-full lg:w-2/3 h-full items-start">
         <h3 class="font-bold text-4xl">Create Account</h3>
-        <form action="/verify.html" class="flex flex-col gap-5 w-full items-center">
+        <form id="registerForm" class="flex flex-col gap-5 w-full items-center">
             <div class="w-full relative">
                 <span class="absolute left-3 top-1">Username</span>
                 <input type="text" name="username" id="username"
@@ -83,7 +83,37 @@
             </p>
         </form>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+        
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const cPassword = document.getElementById('c-password').value;
+            if (password === cPassword) {
+                axios.post('http://127.0.0.1:8000/users/register/', {
+                    username: username,
+                    email: email,
+                    password: password
+                })
+                .then(function (response) {
+                    if (response.status === 201) {
+                        alert(response.data['message'])
+                    }
+                })
+                .catch(function (error) {
+                    console.error('There was an error!', error);
+                });
+            } else {
+                alert('Passwords do not match.');
+            }
+        });
+        
+        
+    </script>
     <script src="/script.js"></script>
 </body>
 
