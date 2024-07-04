@@ -714,36 +714,63 @@
         un.innerHTML = `${responseData['username']}`
         //show object
         window.onload = function() {
-            const user_id = responseData['user_id']; 
-            const url = `http://127.0.0.1:8000/users/user/${user_id}`;
-
-            axios.get(url)
-                .then(function (response) {
-                    console.log('Response:', response.data);
-                     // استفاده از for loop
-                     let total = 0;
-                     for (let i = 0; i < response.data.length; i++) {
-                        console.log(`Item ${i}:`, response.data[i]);
-                        console.log(typeof(response.data[i].accessible_users))
-                        acc_user = response.data[i].accessible_users
-                        if (response.data[i].accessible_users.includes(user_id)) {
-                            console.log(`User ID ${user_id} is in accessible_users of item ${i}`);
-                            add_cart(response.data[i],true,i,acc_user)
-                            addpeople1(i,acc_user)
+            const user_id = responseData['user_id'];
+            const baseUrl = `http://127.0.0.1:8000/users/user/${user_id}`;
+            let currentPage = 1;
+            let isLoading = false;
+            let total = 0; // تعریف متغیر total خارج از loadPage
+        
+            function loadPage(page) {
+                const url = `${baseUrl}?page=${page}`;
+        
+                axios.get(url)
+                    .then(function (response) {
+                        // چاپ کل داده‌های پاسخ برای بررسی ساختار
+                        console.log('Full Response:', response);
+        
+                        // فرضیه اینکه داده‌ها در response.data هستند
+                        if (response.data && Array.isArray(response.data)) {
+                            // استفاده از for loop
+                            for (let i = 0; i < response.data.length; i++) {
+                                console.log(`Item ${i}:`, response.data[i]);
+                                console.log(typeof(response.data[i].accessible_users));
+                                let acc_user = response.data[i].accessible_users;
+                                if (response.data[i].accessible_users.some(obj => obj === user_id)) {
+                                    console.log(`User ID ${user_id} is in accessible_users of item ${i}`);
+                                    add_cart(response.data[i], true, i, acc_user);
+                                    addpeople1(i, acc_user);
+                                } else {
+                                    console.log(`User ID ${user_id} is NOT in accessible_users of item ${i}`);
+                                    add_cart(response.data[i], false, i, acc_user);
+                                    addpeople1(i, acc_user);
+                                }
+                                total += response.data[i].file_size;
+                            }
+                            const paragraph = document.getElementById('tt');
+                            paragraph.innerHTML = `Total : ${total}`;
                         } else {
-                            console.log(`User ID ${user_id} is NOT in accessible_users of item ${i}`);
-                            add_cart(response.data[i],false,i,acc_user)
-                            addpeople1(i,acc_user)
+                            console.error('No results found in response:', response.data);
                         }
-                        total += response.data[i].file_size
-                    }
-                    const paragraph = document.getElementById('tt');
-                    paragraph.innerHTML = `Total : ${total}`;
-
-                })
-                .catch(function (error) {
-                    console.error('There was an error!', error);
-                });
+                        isLoading = false;
+                    })
+                    .catch(function (error) {
+                        console.error('There was an error!', error);
+                        isLoading = false;
+                    });
+            }
+        
+            function handleScroll() {
+                if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 && !isLoading) {
+                    isLoading = true;
+                    currentPage++;
+                    loadPage(currentPage);
+                }
+            }
+        
+            window.addEventListener('scroll', handleScroll);
+        
+            // Load the first page initially
+            loadPage(currentPage);
         };
         
         function add_cart(data,flag,i,acc_user){

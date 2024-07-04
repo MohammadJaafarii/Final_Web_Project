@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from .models import ObjectStorage,CustomUser,UploadedFile
+from .pagination import CustomPageNumberPagination
 from .serializer import ObjectStorageSerializer,CustomUserRetSerializer,UploadedFileSerializer
 from rest_framework.parsers import MultiPartParser,FormParser
 from django.http import HttpResponseRedirect
@@ -89,7 +90,9 @@ class ObjectStorageManagement(APIView):
         try:
 
             accessible_objects = UploadedFile.objects.filter(accessible_users__id=pk)
-            serializer = UploadedFileSerializer(accessible_objects, many=True)
+            paginator = CustomPageNumberPagination()
+            paginated_objects = paginator.paginate_queryset(accessible_objects, request)
+            serializer = UploadedFileSerializer(paginated_objects, many=True)
 
             return Response(serializer.data,status=status.HTTP_200_OK)
         except UploadedFile.DoesNotExist:

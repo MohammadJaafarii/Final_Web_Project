@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import environ
 from pathlib import Path
+import sys
 import os
 from django.core.mail import send_mail
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Initialize environment variables
 env = environ.Env(
